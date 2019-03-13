@@ -1,24 +1,19 @@
-/**
- * @param preferences - an array of integers. Indices of people, whom they love
- * @returns number of love triangles
- */
 module.exports = function getLoveTrianglesCount(preferences = []) {
-  // your implementation
-  count=0;
-  lnth=preferences.length;
-  //triangle can be only with three person
-  if (lnth>=3){
-  for (i=0;i<=lnth-3;i++)  {
-  		a=preferences[i]-1;
-  		b=preferences[a]-1;
-  		c=preferences[b]-1;
-  		//exclude repetitions in calculations
-  		if ((c == i) && (b>i) && (a>i)){count=count+1;
-  	 	};
-	};
+  let count=0;
+  let loveAdress1=0;
+  let loveAdress2=0;
+  let loveAdress3=0;
 
+  if (preferences.length>=3){
+    for (i=0; i<=preferences.length-3; i++)  {
+  		loveAdress1=preferences[i]-1;
+  		loveAdress2=preferences[loveAdress1]-1;
+  		loveAdress3=preferences[loveAdress2]-1;
+  		if ((loveAdress3 == i) && (loveAdress2>i) && (loveAdress1>i)){
+        count++;
+  	  };
+	  };
   };
 
   return count;
-  };
-	
+};
